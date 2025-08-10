@@ -1,0 +1,31 @@
+# FastAPI and Web Server
+fastapi
+uvicorn
+python-multipart
+
+# LLM and Code Execution
+groq
+docker
+
+# Data Analysis and Plotting
+requests
+urllib3
+pandas
+matplotlib
+seaborn
+duckdb
+scikit-learn
+beautifulsoup4
+lxml
+sqlalchemy
+openai
+lxml
+networkx
+
+# For loading environment variables from .env file
+python-dotenv
+
+pyarrow
+sqlalchemy
+fsspec
+flask
