@@ -1,18 +1,12 @@
-FROM python:3.11-slim
+# Use the official AWS Lambda Python base image
+FROM public.ecr.aws/lambda/python:3.13
 
-WORKDIR /app
+# Copy your function code into the container
+COPY app.py ${LAMBDA_TASK_ROOT}
 
-RUN useradd --create-home appuser
-USER appuser
+# (Optional) Copy any requirements.txt and install packages
+COPY requirements.txt .
+RUN pip install -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
 
-COPY --chown=appuser:appuser requirements.txt .
-
-# Install Python dependencies
-RUN pip install --no-cache-dir --user -r requirements.txt
-
-ENV PATH="/home/appuser/.local/bin:${PATH}"
-
-COPY --chown=appuser:appuser . .
-
-# Command to run the application using uvicorn
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "10000"]
+# Set the CMD to your handler (file.function)
+CMD ["app.handler"]

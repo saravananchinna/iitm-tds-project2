@@ -29,3 +29,6 @@ pyarrow
 sqlalchemy
 fsspec
 flask
+
+#for aws lambda
+mangum
